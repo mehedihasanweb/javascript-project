@@ -80,7 +80,7 @@ const showModalCard = (cardId) => {
 
 
 const showModalDetails = (modalDetails) => {
-    console.log(modalDetails.data.input_output_examples);
+    console.log(modalDetails.data.accuracy);
     const modalContainer = document.getElementById('modal-container');
     document.getElementById('modal-container').innerHTML = ''
     modalContainer.innerHTML += `
@@ -116,6 +116,7 @@ const showModalDetails = (modalDetails) => {
 </div>
 <div class="card w-screen bg-base-100 shadow-xl">
     <div class="px-10 pt-10">
+    <div id="badge" class="badge badge-secondary absolute top-0 right-0">${modalDetails.data.accuracy.score === null? '0': modalDetails.data.accuracy.score * 100}%Accuracy</div>
     <figure><img src="${modalDetails.data.image_link[0]}" alt="Shoes" /></figure>
     </div>
     <div class="card-body items-center text-center">
@@ -140,5 +141,7 @@ const spinner = (isLoading) => {
 document.getElementById('see-more-btn').addEventListener('click', function () {
     allFetchData()
 })
+
+
 
 allFetchData(6)

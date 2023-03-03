@@ -66,6 +66,7 @@
                 <div class="modal-box relative">
                     <label for="my-modal-3" class="z-40 btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <div id="modal-container" class="flex gap-2">
+                        
                         <!-- <div class="card w-full bg-base-100 shadow-xl">
                             <div class="card-body items-center text-center">
                                 <h2 class="card-title">Shoes!</h2>
@@ -77,6 +78,7 @@
                         </div>
                         <div class="card w-full bg-base-100 shadow-xl">
                             <div class="px-10 pt-10">
+                                <div id="badge" class="badge badge-secondary absolute top-0 right-0">${modalDetails.data.accuracy.score === null? hiddenBadge(): modalDetails.data.accuracy.score * 100}%Accuracy</div>
                                 <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes"
                                     class="rounded-xl" />
                             </div>
