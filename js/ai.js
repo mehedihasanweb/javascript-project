@@ -71,31 +71,24 @@ const showModalCard = (cardId) => {
 }
 
 
-/* show modal details */
-
-// const modalDetails = (detail) =>{
-//     console.log(detail.data.input_output_examples[0])
-//     const modalContainer = document.getElementById('modal-container');
-// }
-
 
 const showModalDetails = (modalDetails) => {
-    console.log(modalDetails.data.accuracy);
+    console.log(modalDetails.data.pricing);
     const modalContainer = document.getElementById('modal-container');
     document.getElementById('modal-container').innerHTML = ''
     modalContainer.innerHTML += `
-    <div class="card w-screen bg-red-100 shadow-xl">
+    <div class="card w-full bg-red-100 shadow-xl">
     <div class="card-body items-center text-center">
         <h2 class="card-title">${modalDetails.data.description}</h2>
         <div class="flex justify-content-center gap-1 w-full">
             <div class="bg-gray-100 rounded">
-                <p class="text-green-500">${modalDetails.data.pricing[0].price === 'No cost'  ? "Free Of cost/basic":modalDetails.data.pricing[0].price}</p>
+                <p class="text-green-500">${(modalDetails.data.pricing === null) || (modalDetails.data.pricing[0].price === "No cost")  ? "Free Of cost/basic":modalDetails.data.pricing[0].price}</p>
             </div>
             <div class="bg-gray-100 rounded">
-                <p class="text-orange-500">${modalDetails.data.pricing[1].price === 'No cost' ? "Free Of cost/basic": modalDetails.data.pricing[1].price}</p>
+                <p class="text-orange-500">${(modalDetails.data.pricing === null) || (modalDetails.data.pricing[1].price === "No cost") ? "Free Of cost/basic": modalDetails.data.pricing[1].price}</p>
             </div>
             <div class="bg-gray-100 rounded">
-                <p class="text-red-500">${modalDetails.data.pricing ? modalDetails.data.pricing[2].price : ""}</p>
+                <p class="text-red-500">${modalDetails.data.pricing === null ?"Free of Cost /Enterprise": modalDetails.data.pricing[2].price}</p>
             </div>
         </div>
         <div class="flex justify-between gap-4">
@@ -107,21 +100,21 @@ const showModalDetails = (modalDetails) => {
             </div>
             <div>
                 <h2>Integration}</h2>
-                <p class="font-semibold text-gray-400">1.${modalDetails.data.integrations[0]===undefined?'no data':modalDetails.data.integrations[0]} </p>
-                <p class="font-semibold text-gray-400">2.${modalDetails.data.integrations[1]===undefined?'no data':modalDetails.data.integrations[1]} </p>
-                <p class="font-semibold text-gray-400">3.${modalDetails.data.integrations[2]===undefined?'no data':modalDetails.data.integrations[2]} </p>
+                <p class="font-semibold text-gray-400">1.${(modalDetails.data.integrations === null)||(modalDetails.data.integrations[0] === undefined)?'no data':modalDetails.data.integrations[0]} </p>
+                <p class="font-semibold text-gray-400">2.${(modalDetails.data.integrations===null)||(modalDetails.data.integrations[1] === undefined) ?'no data':modalDetails.data.integrations[1]} </p>
+                <p class="font-semibold text-gray-400">3.${(modalDetails.data.integrations === null)||(modalDetails.data.integrations[2] === undefined)?'no data':modalDetails.data.integrations[2]} </p>
             </div>
         </div>
     </div>
 </div>
-<div class="card w-screen bg-base-100 shadow-xl">
+<div class="card w-full bg-base-100 shadow-xl">
     <div class="px-10 pt-10">
     <div id="badge" class="badge badge-secondary absolute top-0 right-0">${modalDetails.data.accuracy.score === null? '0': modalDetails.data.accuracy.score * 100}%Accuracy</div>
     <figure><img src="${modalDetails.data.image_link[0]}" alt="Shoes" /></figure>
     </div>
     <div class="card-body items-center text-center">
-        <h4 class="text-2xl font-semibold">${modalDetails.data.input_output_examples[0].input}</h4>
-        <p>${modalDetails.data.input_output_examples[0].output}</p>
+        <h4 class="text-2xl font-semibold">${modalDetails.data.input_output_examples === null ? "Can you give any example": modalDetails.data.input_output_examples[0].input}</h4>
+        <p>${modalDetails.data.input_output_examples === null ? "No! Not Yet! Take a break!!!" : modalDetails.data.input_output_examples[0].output}</p>
     </div>
 </div>
     `
