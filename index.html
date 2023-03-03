@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/1ee1099289.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="container">
+    <!-- header section start -->
+    <header>
+        <section class="text-center py-8">
+            <h1 class="text-4xl font-semibold py-6">AI Universe Hub</h1>
+            <button class="bg-red-400 py-3 px-3 text-white font-semibold rounded-lg">Sort By Data</button>
+        </section>
+    </header>
+    <!-- header section end -->
+
+    <!-- main section start -->
+    <main>
+        <!-- card container section  -->
+        <section id="cards-container" class="grid grid-cols-3 gap-3">
+
+        </section>
+
+        <section id="spinner" class="d-none">
+            <div class="d-flex text-success justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- see all button  -->
+        <div class="text-center my-6">
+            <button id="see-more-btn" class="d-none bg-red-400 py-3 px-5 text-white font-bold rounded-lg">See
+                More</button>
+        </div>
+
+        <!-- modal  -->
+        <section>
+            <!-- The button to open modal -->
+            <!-- <label  class="btn">open modal</label> -->
+
+            <!-- Put this part before </body> tag -->
+            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box relative">
+                    <label for="my-modal-3" class="z-40 btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <div class="flex gap-2">
+                        <div class="card w-96 bg-base-100 shadow-xl">
+                            <div class="px-10 pt-10">
+                                <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes"
+                                    class="rounded-xl" />
+                            </div>
+                            <div class="card-body items-center text-center">
+                                <h2 class="card-title">Shoes!</h2>
+                                <p>If a dog chews shoes whose shoes does he choose?</p>
+                                <div class="card-actions">
+                                    <button class="btn btn-primary">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card w-96 bg-base-100 shadow-xl">
+                            <div class="px-10 pt-10">
+                                <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes"
+                                    class="rounded-xl" />
+                            </div>
+                            <div class="card-body items-center text-center">
+                                <h2 class="card-title">Shoes!</h2>
+                                <p>If a dog chews shoes whose shoes does he choose?</p>
+                                <div class="card-actions">
+                                    <button class="btn btn-primary">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- main section end -->
+
+
+
+    <!-- ja files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="js/ai.js"></script>
+</body>
+
+</html>
