@@ -33,9 +33,9 @@ const showAllDataCard = (cards, limitCard) => {
         </figure>
         <div class="card-body">
           <h2 class="card-title text-2xl">Features</h2>
-          <p class="font-semibold text-gray-400">1. ${card.features[0]}</p>
-          <p class="font-semibold text-gray-400">2. ${card.features[1]}</p>
-          <p class="font-semibold text-gray-400">3. ${card.features[2]}</p>
+          <p class="font-semibold text-gray-400">1. ${card.features[0]?card.features[0] : "No data found" }</p>
+          <p class="font-semibold text-gray-400">2. ${card.features[1]?card.features[1] : "No data found"}</p>
+          <p class="font-semibold text-gray-400">3. ${card.features[2]?card.features[2] : "No data found"}</p>
           
           <div class="card-footer flex items-center justify-between">
             <div>
@@ -73,7 +73,8 @@ const showModalCard = (cardId) => {
 
 
 const showModalDetails = (modalDetails) => {
-    console.log(modalDetails.data.pricing);
+    console.log(modalDetails.data.accuracy.score);
+    
     const modalContainer = document.getElementById('modal-container');
     document.getElementById('modal-container').innerHTML = ''
     modalContainer.innerHTML += `
@@ -118,6 +119,7 @@ const showModalDetails = (modalDetails) => {
     </div>
 </div>
     `
+    
 }
 
 
