@@ -1,30 +1,38 @@
+let global = [];
 /* all data fetch */
 const allFetchData = (limitCard) => {
     spinner(true)
     const URL = `https://openapi.programming-hero.com/api/ai/tools`
     fetch(URL)
         .then(res => res.json())
-        .then(json => showAllDataCard(json.data.tools, limitCard))
+        .then(json => {
+            // console.log(json.data.tools)
+            global = json.data.tools
+            // global.push(`${json.data.tools}`)
+            showAllDataCard(json.data.tools, limitCard)
+        })
+        
+        
 }
 
-
 /* show all data card */
-const showAllDataCard = (cards, limitCard) => {
-    // console.log(cards)
+const showAllDataCard = (cards,limitCard) => {
+    
     document.getElementById('cards-container').innerHTML = ''
     // document.getElementById('cards-container');
-    const showAll = document.getElementById('see-more-btn');
-    // cards = cards.slice(0, 6);
+    
 
+    const showAll = document.getElementById('see-more-btn');
     if (cards.length > 6 && limitCard) {
         cards = cards.slice(0, 6);
         showAll.classList.remove('d-none')
-    } else {
+    } 
+    else {
         showAll.classList.add('d-none')
     }
-
+    
     cards.forEach(card => {
-        console.log(card.published_in);
+        
         const cardsContainer = document.getElementById('cards-container');
         cardsContainer.innerHTML += `
         <div class="card w-fll bg-base-100 shadow-xl">
@@ -57,8 +65,6 @@ const showAllDataCard = (cards, limitCard) => {
     spinner(false)
 }
 
-
-
 /* show modal card */
 const showModalCard = (cardId) => {
     const URL = `https://openapi.programming-hero.com/api/ai/tool/${cardId}`
@@ -66,17 +72,11 @@ const showModalCard = (cardId) => {
         .then(res => res.json())
         .then(data => {
             showModalDetails(data);
-            
         })
 }
 
 
-
 const showModalDetails = (modalDetails) => {
-    // console.log(modalDetails);
-    // if(modalDetails.data.accuracy.score === null){
-
-    // }
     const modalContainer = document.getElementById('modal-container');
     document.getElementById('modal-container').innerHTML = ''
     modalContainer.innerHTML += `
@@ -136,7 +136,12 @@ const spinner = (isLoading) => {
 }
 
 document.getElementById('see-more-btn').addEventListener('click', function () {
+    // const totalData = global.length
+    // console.log(totalData);
     allFetchData()
+    // console.log(global.length);
+    // let sortValue = global.sort(sorting);
+    // showAllDataCard(sortValue,global.length)
 })
 
 
@@ -152,6 +157,34 @@ const showBadge = (score) =>{
 }
 
 
+const sorting = (a,b) =>{
+    const x = new Date(a.published_in)
+    console.log(x)
+    const y = new Date(b.published_in)
+    console.log(y);
+    if(x > y){
+        return 1
+    }else if( x < y ){
+        return -1
+    }else{
+        return 0
+    }
+}
+// console.log(global);
+
+
+document.getElementById('sorting-btn').addEventListener('click', function(){
+    // console.log(global.sort(sorting));
+    // spinner(true)
+    // console.log(global.length);
+    // global.sort(function(a, b){return b - a})
+    // allFetchData(sortValue.length)
+    // console.log(global);
+    let sortValue = global.sort(sorting);
+    // console.log(sortValue.length);
+    // console.log(sortValue.length);
+    showAllDataCard(sortValue, sortValue.length)
+})
 
 
 allFetchData(6)
