@@ -6,22 +6,15 @@ const allFetchData = (limitCard) => {
     fetch(URL)
         .then(res => res.json())
         .then(json => {
-            // console.log(json.data.tools)
             global = json.data.tools
-            // global.push(`${json.data.tools}`)
             showAllDataCard(json.data.tools, limitCard)
         })
-        
-        
 }
 
 /* show all data card */
 const showAllDataCard = (cards,limitCard) => {
     
     document.getElementById('cards-container').innerHTML = ''
-    // document.getElementById('cards-container');
-    
-
     const showAll = document.getElementById('see-more-btn');
     if (cards.length > 6 && limitCard) {
         cards = cards.slice(0, 6);
@@ -75,7 +68,7 @@ const showModalCard = (cardId) => {
         })
 }
 
-
+/* show modal details */
 const showModalDetails = (modalDetails) => {
     const modalContainer = document.getElementById('modal-container');
     document.getElementById('modal-container').innerHTML = ''
@@ -135,15 +128,6 @@ const spinner = (isLoading) => {
     }
 }
 
-document.getElementById('see-more-btn').addEventListener('click', function () {
-    // const totalData = global.length
-    // console.log(totalData);
-    allFetchData()
-    // console.log(global.length);
-    // let sortValue = global.sort(sorting);
-    // showAllDataCard(sortValue,global.length)
-})
-
 
 /* show badge function */
 const showBadge = (score) =>{
@@ -156,7 +140,7 @@ const showBadge = (score) =>{
     `
 }
 
-
+/* sorting function */
 const sorting = (a,b) =>{
     const x = new Date(a.published_in)
     console.log(x)
@@ -170,19 +154,16 @@ const sorting = (a,b) =>{
         return 0
     }
 }
-// console.log(global);
 
+document.getElementById('see-more-btn').addEventListener('click', function () {
+    
+    allFetchData()
+})
 
+/* sort btn function */
 document.getElementById('sorting-btn').addEventListener('click', function(){
-    // console.log(global.sort(sorting));
-    // spinner(true)
-    // console.log(global.length);
-    // global.sort(function(a, b){return b - a})
-    // allFetchData(sortValue.length)
-    // console.log(global);
+    
     let sortValue = global.sort(sorting);
-    // console.log(sortValue.length);
-    // console.log(sortValue.length);
     showAllDataCard(sortValue, sortValue.length)
 })
 
