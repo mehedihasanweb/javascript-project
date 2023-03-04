@@ -24,7 +24,7 @@ const showAllDataCard = (cards, limitCard) => {
     }
 
     cards.forEach(card => {
-        // console.log(card);
+        console.log(card.published_in);
         const cardsContainer = document.getElementById('cards-container');
         cardsContainer.innerHTML += `
         <div class="card w-fll bg-base-100 shadow-xl">
@@ -73,8 +73,10 @@ const showModalCard = (cardId) => {
 
 
 const showModalDetails = (modalDetails) => {
-    console.log(modalDetails.data.accuracy.score);
-    
+    // console.log(modalDetails);
+    // if(modalDetails.data.accuracy.score === null){
+
+    // }
     const modalContainer = document.getElementById('modal-container');
     document.getElementById('modal-container').innerHTML = ''
     modalContainer.innerHTML += `
@@ -110,8 +112,8 @@ const showModalDetails = (modalDetails) => {
 </div>
 <div class="card w-full bg-base-100 shadow-xl">
     <div class="px-10 pt-10">
-    <div id="badge" class="badge badge-secondary absolute top-0 right-0">${modalDetails.data.accuracy.score === null? '0': modalDetails.data.accuracy.score * 100}%Accuracy</div>
-    <figure><img src="${modalDetails.data.image_link[0]}" alt="Shoes" /></figure>
+    ${showBadge(modalDetails.data.accuracy.score)}
+    <figure><img src="${modalDetails.data.image_link[0]}" alt="" /></figure>
     </div>
     <div class="card-body items-center text-center">
         <h4 class="text-2xl font-semibold">${modalDetails.data.input_output_examples === null ? "Can you give any example": modalDetails.data.input_output_examples[0].input}</h4>
@@ -136,6 +138,19 @@ const spinner = (isLoading) => {
 document.getElementById('see-more-btn').addEventListener('click', function () {
     allFetchData()
 })
+
+
+/* show badge function */
+const showBadge = (score) =>{
+    if(!score){
+        return ''
+    }
+    return `
+    <div id="badge" class="badge badge-secondary absolute top-0 right-0">${score * 100}%Accuracy</div>
+    
+    `
+}
+
 
 
 
